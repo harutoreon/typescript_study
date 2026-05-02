@@ -2,10 +2,12 @@ FROM node:lts-slim
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY --chown=node:node package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY --chown=node:node . .
+
+USER node
 
 CMD [ "sh" ]
